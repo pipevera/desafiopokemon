@@ -1,0 +1,36 @@
+<nav class="navbar navbar-inverse">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-2">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">POKEMON</a>
+    </div>
+
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">
+      <ul class="nav navbar-nav">
+        <li><a href="<%= pokemons_path %>">Pokedex</a></li>
+        <li><a href="<%= catches_path %>">Mis Pokemons</a></li>
+      </ul>
+
+      <ul class="nav navbar-nav navbar-right">
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><%= user_signed_in? ? current_user.email : "Unete!" %> <span class="caret"></span></a>
+          <ul class="dropdown-menu" role="menu">
+            <% if user_signed_in? %>
+              <li><a href="<%= edit_user_registration_path %>">Editar perfil</a></li>
+              <li class="divider"></li>
+              <li><%= link_to "Cerrar Sesión", destroy_user_session_path, method: :delete  %></li>
+            <% else %>
+              <li><a href="<%= new_user_session_path %>">Log In</a></li>
+              <li><a href="<%= new_user_registration_path %>">Sign Up!</a></li>
+            <% end %>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
